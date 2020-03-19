@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="result"></div>
+
+<body>
+    <script>
+        var divRes = document.getElementById("result");
+        var userDataStr = '{"name": "sammy","age":24,"job":"Programer"}';
+        // console.log(userDataStr);
+
+        /** 
+         * @Author: SamanAzizi 
+         * @Date: 2020-03-16 13:29:04 
+         * @Desc:  convert Json Str Structure into Json Object Structure
+         */
+        var userDataobj = JSON.parse(userDataStr);
+        userDataobj['age'] = 25;
+        for (var Key in userDataobj) {
+            divRes.innerHTML += "<div style='red'>" + Key + ":" + userDataobj[Key] + "</div>";
+        }
+
+        /** 
+         * @Author: SamanAzizi 
+         * @Date: 2020-03-16 13:33:37 
+         * @Desc:  convert JSON obj into Json Str
+         */
+        var userDataStrAgain = JSON.stringify(userDataobj);
+        divRes.innerHTML += "<br>" + ("I am JSON Str =>" + userDataStrAgain);
+
+
+        /** 
+         * @Author: SamanAzizi 
+         * @Date: 2020-03-16 13:37:42 
+         * @Desc:  Check if Json is Valid Structure
+         */
+         console.log(isValid(userDataStr));
+        function isValid(str) {
+            try {
+                JSON.parse(userDataStr)
+            } catch (e) {
+                console.log("invalid");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
